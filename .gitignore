@@ -1,0 +1,19 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+build/
+dist/
+# personal data and secrets never go in git
+.env
+config.toml
+data/
+*.db
+*.db-wal
+*.db-shm
+*.sqlite
+CONNECTOR_URL.txt
+PROGRESS_URL.txt
+# local task notes
+TASK.md

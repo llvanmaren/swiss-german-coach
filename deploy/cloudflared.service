@@ -1,0 +1,12 @@
+# systemd --user unit for the tunnel (copy to ~/.config/systemd/user/)
+[Unit]
+Description=Cloudflare tunnel for Swiss German coach
+After=network-online.target
+
+[Service]
+ExecStart=%h/.local/bin/cloudflared --no-autoupdate --config %h/.cloudflared/swiss-german-coach.yml tunnel run
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target

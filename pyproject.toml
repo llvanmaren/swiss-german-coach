@@ -1,0 +1,19 @@
+[project]
+name = "swiss-german-coach"
+version = "0.1.0"
+description = "Swiss German (Züritüütsch) speaking coach for ChatGPT Apps: an MCP tool server with spaced repetition and session memory"
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Luka van Maren" }]
+requires-python = ">=3.11"
+dependencies = ["mcp==2.3.0", "uvicorn==0.54.0", "pydantic==2.14.3"]
+
+[project.optional-dependencies]
+dev = ["pytest==9.2.0", "httpx==0.28.1"]
+
+[tool.setuptools]
+packages = ["coach"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-p no:cacheprovider"

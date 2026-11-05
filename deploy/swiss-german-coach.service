@@ -1,0 +1,20 @@
+# systemd --user unit. Install:
+#   mkdir -p ~/.config/systemd/user && cp deploy/swiss-german-coach.service ~/.config/systemd/user/
+#   edit WorkingDirectory / paths below, then:
+#   systemctl --user daemon-reload && systemctl --user enable --now swiss-german-coach
+#   loginctl enable-linger "$USER"   # keep it running when you are logged out
+[Unit]
+Description=Swiss German coach MCP server
+After=network-online.target
+
+[Service]
+WorkingDirectory=%h/swiss-german-coach
+EnvironmentFile=%h/swiss-german-coach/.env
+ExecStart=%h/swiss-german-coach/.venv/bin/python -m coach
+Restart=on-failure
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=default.target

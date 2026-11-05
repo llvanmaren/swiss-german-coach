@@ -1,0 +1,10 @@
+# Caddy terminates HTTPS (automatic certificates) and proxies to the local server.
+# Replace the hostname; COACH_HOSTS in .env must contain the same hostname.
+coach.example.com {
+	encode gzip
+	reverse_proxy 127.0.0.1:8000
+	log {
+		# keep secret paths out of access logs
+		output discard
+	}
+}

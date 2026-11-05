@@ -1,0 +1,4 @@
+# Direct runtime dependencies, pinned exactly. requirements.lock pins the full tested set (pip freeze).
+mcp==2.3.0
+uvicorn==0.54.0
+pydantic==2.14.3

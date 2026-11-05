@@ -1,0 +1,14 @@
+# Cloudflare Tunnel: public HTTPS without opening ports or needing root.
+#   cloudflared tunnel login
+#   cloudflared tunnel create swiss-german-coach
+#   cloudflared tunnel route dns swiss-german-coach coach.example.com
+# Save as ~/.cloudflared/swiss-german-coach.yml and run:
+#   cloudflared --no-autoupdate --config ~/.cloudflared/swiss-german-coach.yml tunnel run
+tunnel: swiss-german-coach
+credentials-file: /path/to/.cloudflared/<tunnel-id>.json
+ingress:
+  - hostname: coach.example.com
+    service: http://127.0.0.1:8000
+    originRequest:
+      httpHostHeader: coach.example.com
+  - service: http_status:404
